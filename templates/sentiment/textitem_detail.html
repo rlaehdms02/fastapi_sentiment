@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block content %}
+<h1>감정 기록 상세</h1><div class="card"><p>입력: {{ item.text }}</p><p>라벨: {{ item.label }}</p>
+<p>점수: {% if item.score is not none %}{{ '%.4f'|format(item.score) }}{% else %}미분석{% endif %}</p></div>
+<a class="btn" href="{{ url_for('item_update_page', item_id=item.id) }}">수정</a>
+<a class="btn" href="{{ url_for('item_delete_page', item_id=item.id) }}">삭제</a>
+<a class="btn" href="{{ url_for('item_list') }}">목록</a>{% endblock %}

@@ -1,0 +1,37 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.so
+
+# ===== 가상환경 =====
+.venv/
+venv/
+env/
+
+# ===== 테스트 / 캐시 =====
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ===== 데이터베이스 (실행하면 자동 생성) =====
+sentiment.db
+*.db
+*.sqlite3
+*.db-journal
+
+# ===== 환경변수 / 비밀정보 =====
+.env
+.env.*
+
+# ===== Hugging Face 모델 캐시 (프로젝트 안에 받은 경우) =====
+.cache/
+models/
+
+# ===== 에디터 / OS =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*:Zone.Identifier

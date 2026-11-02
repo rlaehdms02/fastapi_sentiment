@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block content %}
+<h1>{% if item %}글 수정{% else %}새 글 작성{% endif %}</h1>
+<form method="post" action="{% if item %}{{ url_for('item_update', item_id=item.id) }}{% else %}{{ url_for('item_create') }}{% endif %}">
+<label for="text">문장 입력</label><textarea id="text" name="text" rows="4" maxlength="500">{{ text }}</textarea>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<button type="submit">저장(자동 분석)</button><a class="btn" href="{{ url_for('item_list') }}">목록</a></form>
+{% endblock %}

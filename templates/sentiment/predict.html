@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}감정분석 테스트{% endblock %}
+{% block content %}
+<h1>감정분석 테스트</h1><p>문장을 입력하면 Hugging Face 모델이 label/score를 반환합니다.</p>
+<form method="post" action="{{ url_for('predict') }}">
+<label for="text">문장 입력</label><textarea id="text" name="text" rows="4" maxlength="500" placeholder="감정분석할 문장을 입력하세요">{{ text }}</textarea>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<button type="submit">분석하기</button><a class="btn" href="{{ url_for('predict_page') }}">초기화</a>
+</form>
+{% if result %}
+<section class="card"><h2>결과</h2>
+{% set label_lower = result.label|lower %}
+{% if 'pos' in label_lower %}<span class="badge pos">{{ result.label }}</span>
+{% elif 'neg' in label_lower %}<span class="badge neg">{{ result.label }}</span>
+{% else %}<span class="badge neu">{{ result.label }}</span>{% endif %}
+<p>입력: {{ result.input }}</p><p>라벨: {{ result.label }}</p><p>점수: {{ '%.4f'|format(result.score) }}</p></section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}
+<h1>삭제 확인</h1><p>{{ item.text }}</p><p>정말 삭제할까요?</p>
+<form method="post" action="{{ url_for('item_delete', item_id=item.id) }}">
+<button type="submit">삭제</button><a class="btn" href="{{ url_for('item_detail', item_id=item.id) }}">취소</a>
+</form>{% endblock %}
